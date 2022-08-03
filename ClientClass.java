@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 
-public class ClientClass {
+public class ClientClass implements Client {
     private int id;
     private String name;
     private float balance;
@@ -16,18 +16,26 @@ public class ClientClass {
         this.balance = 0f;
         this.client = new LinkedList<>();
     }
+
+    @Override
     void addGuest(int id, String name){
         client.add(new ClientClass(id, name, false));
     }
+
+    @Override
     void addVip(int id, String name){
         client.add(new ClientClass(id, name, true));
     }
+
+    @Override
     void payEntry(int id){
         if(isVip){
             entryPrice = 50%entryPrice;
         }
         balance -= entryPrice;
     }
+
+    @Override
     void payExit(int id){
 
     }
